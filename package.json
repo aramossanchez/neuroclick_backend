@@ -1,0 +1,31 @@
+{
+  "name": "neuroclick_backend",
+  "version": "1.0.0",
+  "description": "Aplicación de gestion de clinica de neuro rehabilitacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aramossanchez/neuroclick_backend.git"
+  },
+  "author": "Armando Ramos Sánchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aramossanchez/neuroclick_backend/issues"
+  },
+  "homepage": "https://github.com/aramossanchez/neuroclick_backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.0-beta.3",
+    "sequelize-cli": "^6.3.0"
+  }
+}
