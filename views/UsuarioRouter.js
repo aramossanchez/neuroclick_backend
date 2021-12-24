@@ -7,9 +7,9 @@ const UsuarioController = require('../controllers/UsuarioController');
 // router.post('/login', UsuarioController.signIn);
 // router.post('/registro', auth, UsuarioController.signUp);
 router.get('/', UsuarioController.listadoCompleto);
-// router.get('/:id', auth, UsuarioController.getById);
-// router.put('/:id', auth, UsuarioController.update);
-// router.delete('/', auth, UsuarioController.deleteAll);
-// router.delete('/:id', auth, UsuarioController.delete);
+router.get('/:id', UsuarioController.usuarioId);
+router.post('/', UsuarioController.nuevoUsuario);
+router.put('/:id', UsuarioController.actualizarUsuario);
+router.delete('/:id', UsuarioController.borrarUsuario);
 
 module.exports = router;
