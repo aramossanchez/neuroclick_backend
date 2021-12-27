@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.antecedentes_familiares, {
         foreignKey: 'UsuarioID'
       });
+      this.hasMany(models.enfermedades_usuarios, {
+        foreignKey: 'UsuarioID'
+      });
     }
   };
   usuario.init({

@@ -105,7 +105,7 @@ EnfermedadController.actualizarEnfermedad = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//BORRAR USUARIO, BUSCANDO POR ID
+//BORRAR ENFERMEDAD, BUSCANDO POR ID
 EnfermedadController.borrarEnfermedad = (req, res) => {
 
     const id = req.params.id;
