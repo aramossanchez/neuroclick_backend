@@ -6,7 +6,11 @@ const UsuarioController = {};
 
 UsuarioController.listadoCompleto = (req, res) => {
 
-    usuario.findAll()
+    usuario.findAll({
+        order: [
+            ['apellidos', 'ASC'],
+        ],
+    })
         .then(data => {
             res.send(data);
         })
@@ -42,6 +46,8 @@ UsuarioController.usuarioId = (req, res) => {
         });
 
 };
+
+//-------------------------------------------------------------------------------------
 
 //CREAR USUARIO NUEVO
 UsuarioController.nuevoUsuario = (req, res) => {
@@ -82,6 +88,7 @@ UsuarioController.nuevoUsuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
+//ACTUALIZAR USUARIO, BUSCANDO POR ID
 UsuarioController.actualizarUsuario = (req, res) => {
 
         const id = req.params.id;
