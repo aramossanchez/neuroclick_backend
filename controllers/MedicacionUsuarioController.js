@@ -1,44 +1,44 @@
-const { enfermedades_usuarios } = require('../models/index');
+const { medicaciones_usuarios } = require('../models/index');
 const { usuario } = require('../models/index');
 
-const EnfermedadUsuarioController = {};
+const MedicacionUsuarioController = {};
 
-//LISTADO DE TODAS LAS ENFERMEDADES_USUARIOS
+//LISTADO DE TODAS LAS MEDICACIONES_USUARIOS
 
-EnfermedadUsuarioController.listadoCompleto = (req, res) => {
+MedicacionUsuarioController.listadoCompleto = (req, res) => {
 
-    enfermedades_usuarios.findAll()
+    medicaciones_usuarios.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar acceder a las enfermedades_usuarios."
+                err.message || "Ha surgido algún error al intentar acceder a las medicaciones_usuarios."
             });
         });
 };
 
 //-------------------------------------------------------------------------------------
 
-//OBTENER UNA UNICA ENFERMEDAD_USUARIO, BUSCANDO POR ID
-EnfermedadUsuarioController.enfermedad_usuarioId = (req, res) => {
+//OBTENER UNA UNICA MEDICACION_USUARIO, BUSCANDO POR ID
+MedicacionUsuarioController.medicacion_usuarioId = (req, res) => {
 
     const id = req.params.id;
 
-    enfermedades_usuarios.findByPk(id)
+    medicaciones_usuarios.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `No se puede encontrar la enfermedad_usuario con el id ${id}.`
+                    message: `No se puede encontrar la medicacion_usuario con el id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar acceder a la enfermedad_usuario con el id " + id
+                message: "Ha surgido algún error al intentar acceder a la medicacion_usuario con el id " + id
             });
         });
 
@@ -46,12 +46,12 @@ EnfermedadUsuarioController.enfermedad_usuarioId = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//OBTENER ENFERMEDADES_USUARIOS, POR ID DE USUARIO
-EnfermedadUsuarioController.enfermedad_usuarioUsuarioId = (req, res) => {
+//OBTENER MEDICACIONES_USUARIOS, POR ID DE USUARIO
+MedicacionUsuarioController.medicacion_usuarioUsuarioId = (req, res) => {
 
     const id = req.params.id;
 
-    enfermedades_usuarios.findAll({
+    medicaciones_usuarios.findAll({
         include: [{
             model: usuario,
             where: {id: id}
@@ -61,13 +61,13 @@ EnfermedadUsuarioController.enfermedad_usuarioUsuarioId = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `No se puede encontrar la enfermedad_usuario con el id ${id}.`
+                    message: `No se puede encontrar la medicacion_usuario con el id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar acceder a la enfermedad_usuario con el id " + id
+                message: "Ha surgido algún error al intentar acceder a la medicacion_usuario con el id " + id
             });
         });
 
@@ -75,31 +75,31 @@ EnfermedadUsuarioController.enfermedad_usuarioUsuarioId = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//CREAR ENFERMEDAD_USUARIO NUEVA
-EnfermedadUsuarioController.nuevaEnfermedad_usuario = (req, res) => {
+//CREAR MEDICACION_USUARIO NUEVA
+MedicacionUsuarioController.nuevaMedicacion_usuario = (req, res) => {
 
-    if (!req.body.UsuarioID || !req.body.EnfermedadID) {
+    if (!req.body.UsuarioID || !req.body.MedicacionID) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
         return;
     }
       
-    const nuevaEnfermedad_usuario = {
+    const nuevaMedicacion_usuario = {
         UsuarioID: req.body.UsuarioID,
-        EnfermedadID: req.body.EnfermedadID,
+        MedicacionID: req.body.MedicacionID,
         createdAt: new Date(),
         updatedAt: new Date()
     };
       
-    enfermedades_usuarios.create(nuevaEnfermedad_usuario)
+    medicaciones_usuarios.create(nuevaMedicacion_usuario)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar crear la enfermedad_usuario."
+                err.message || "Ha surgido algún error al intentar crear la medicacion_usuario."
             });
         });
 
@@ -107,28 +107,28 @@ EnfermedadUsuarioController.nuevaEnfermedad_usuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//ACTUALIZAR ENFERMEDAD_USUARIO, BUSCANDO POR ID
-EnfermedadUsuarioController.actualizarEnfermedad_usuario = (req, res) => {
+//ACTUALIZAR MEDICACION_USUARIO, BUSCANDO POR ID
+MedicacionUsuarioController.actualizarMedicacion_usuario = (req, res) => {
 
         const id = req.params.id;
 
-        enfermedades_usuarios.update(req.body, {
+        medicaciones_usuarios.update(req.body, {
             where: { id: id }
           })
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "La enfermedad_usuario ha sido actualizado correctamente."
+                  message: "La medicacion_usuario ha sido actualizado correctamente."
                 });
               } else {
                 res.send({
-                  message: `No se ha podido actualizar la enfermedad_usuario con el id ${id}`
+                  message: `No se ha podido actualizar la medicacion_usuario con el id ${id}`
                 });
               }
             })
             .catch(err => {
               res.status(500).send({
-                message: "Ha surgido algún error al intentar actualizar la enfermedad_usuario con el id " + id + "."
+                message: "Ha surgido algún error al intentar actualizar la medicacion_usuario con el id " + id + "."
               });
             });
 
@@ -136,28 +136,28 @@ EnfermedadUsuarioController.actualizarEnfermedad_usuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//BORRAR ENFERMEDAD_USUARIO, BUSCANDO POR ID
-EnfermedadUsuarioController.borrarEnfermedad_usuario = (req, res) => {
+//BORRAR MEDICACION_USUARIO, BUSCANDO POR ID
+MedicacionUsuarioController.borrarMedicacion_usuario = (req, res) => {
 
     const id = req.params.id;
 
-    enfermedades_usuarios.destroy({
+    medicaciones_usuarios.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: `La enfermedad_usuario con id ${id} ha sido eliminado correctamente.`
+                    message: `La medicacion_usuario con id ${id} ha sido eliminado correctamente.`
                 });
             } else {
                 res.send({
-                    message: `No se ha podido eliminar la enfermedad_usuario con id ${id}.`
+                    message: `No se ha podido eliminar la medicacion_usuario con id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar borrar la enfermedad_usuario con el id " + id
+                message: "Ha surgido algún error al intentar borrar la medicacion_usuario con el id " + id
             });
         });
 
@@ -165,4 +165,4 @@ EnfermedadUsuarioController.borrarEnfermedad_usuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-module.exports = EnfermedadUsuarioController;
+module.exports = MedicacionUsuarioController;

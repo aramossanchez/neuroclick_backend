@@ -1,12 +1,12 @@
-const { usuario } = require('../models/index');
+const { profesionales } = require('../models/index');
 
-const UsuarioController = {};
+const ProfesionalController = {};
 
-//LISTADO DE TODOS LOS USUARIOS
+//LISTADO DE TODOS LOS PROFESIONALES
 
-UsuarioController.listadoCompleto = (req, res) => {
+ProfesionalController.listadoCompleto = (req, res) => {
 
-    usuario.findAll({
+    profesionales.findAll({
         order: [
             ['apellidos', 'ASC'],
         ],
@@ -17,31 +17,31 @@ UsuarioController.listadoCompleto = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar acceder a los usuarios."
+                err.message || "Ha surgido algún error al intentar acceder a los profesionales."
             });
         });
 };
 
 //-------------------------------------------------------------------------------------
 
-//OBTENER UN UNICO USUARIO, BUSCANDO POR ID
-UsuarioController.usuarioId = (req, res) => {
+//OBTENER UN UNICO PROFESIONAL, BUSCANDO POR ID
+ProfesionalController.profesionalId = (req, res) => {
 
     const id = req.params.id;
 
-    usuario.findByPk(id)
+    profesionales.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `No se puede encontrar el usuario con el id ${id}.`
+                    message: `No se puede encontrar el profesional con el id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar acceder al usuario con el id " + id
+                message: "Ha surgido algún error al intentar acceder al profesional con el id " + id
             });
         });
 
@@ -49,8 +49,8 @@ UsuarioController.usuarioId = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//CREAR USUARIO NUEVO
-UsuarioController.nuevoUsuario = (req, res) => {
+//CREAR PROFESIONAL NUEVO
+ProfesionalController.nuevoProfesional = (req, res) => {
 
     if (!req.body.nombre || !req.body.apellidos || !req.body.direccion || !req.body.pension || !req.body.persona_contacto || !req.body.telefono_contacto || !req.body.fecha_nacimiento || !req.body.peso || !req.body.estatura) {
         res.status(400).send({
@@ -59,7 +59,7 @@ UsuarioController.nuevoUsuario = (req, res) => {
         return;
     }
       
-    const nuevoUsuario = {
+    const nuevoProfesional = {
         nombre: req.body.nombre,
         apellidos: req.body.apellidos,
         direccion: req.body.direccion,
@@ -73,14 +73,14 @@ UsuarioController.nuevoUsuario = (req, res) => {
         updatedAt: new Date()
     };
       
-    usuario.create(nuevoUsuario)
+    profesionales.create(nuevoProfesional)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar crear el usuario."
+                err.message || "Ha surgido algún error al intentar crear el profesional."
             });
         });
 
@@ -88,28 +88,28 @@ UsuarioController.nuevoUsuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//ACTUALIZAR USUARIO, BUSCANDO POR ID
-UsuarioController.actualizarUsuario = (req, res) => {
+//ACTUALIZAR PROFESIONAL, BUSCANDO POR ID
+ProfesionalController.actualizarProfesional = (req, res) => {
 
         const id = req.params.id;
 
-        usuario.update(req.body, {
+        profesionales.update(req.body, {
             where: { id: id }
           })
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "El usuario ha sido actualizado correctamente."
+                  message: "El profesional ha sido actualizado correctamente."
                 });
               } else {
                 res.send({
-                  message: `No se ha podido actualizar el usuario con el id ${id}`
+                  message: `No se ha podido actualizar el profesional con el id ${id}`
                 });
               }
             })
             .catch(err => {
               res.status(500).send({
-                message: "Ha surgido algún error al intentar actualizar el usuario con el id " + id + "."
+                message: "Ha surgido algún error al intentar actualizar el profesional con el id " + id + "."
               });
             });
 
@@ -117,28 +117,28 @@ UsuarioController.actualizarUsuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//BORRAR USUARIO, BUSCANDO POR ID
-UsuarioController.borrarUsuario = (req, res) => {
+//BORRAR PROFESIONAL, BUSCANDO POR ID
+ProfesionalController.borrarProfesional = (req, res) => {
 
     const id = req.params.id;
 
-    usuario.destroy({
+    profesionales.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: `El usuario con id ${id} ha sido eliminado correctamente.`
+                    message: `El profesional con id ${id} ha sido eliminado correctamente.`
                 });
             } else {
                 res.send({
-                    message: `No se ha podido eliminar el usuario con id ${id}.`
+                    message: `No se ha podido eliminar el profesional con id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar borrar el usuario con el id " + id
+                message: "Ha surgido algún error al intentar borrar el profesional con el id " + id
             });
         });
 
@@ -146,5 +146,4 @@ UsuarioController.borrarUsuario = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-
-module.exports = UsuarioController;
+module.exports = ProfesionalController;
