@@ -52,7 +52,7 @@ ProfesionalController.profesionalId = (req, res) => {
 //CREAR PROFESIONAL NUEVO
 ProfesionalController.nuevoProfesional = (req, res) => {
 
-    if (!req.body.nombre || !req.body.apellidos || !req.body.direccion || !req.body.pension || !req.body.persona_contacto || !req.body.telefono_contacto || !req.body.fecha_nacimiento || !req.body.peso || !req.body.estatura) {
+    if (!req.body.correo_electronico || !req.body.clave_acceso || !req.body.nombre || !req.body.apellidos || !req.body.direccion || !req.body.telefono_contacto || !req.body.rol) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
@@ -60,15 +60,13 @@ ProfesionalController.nuevoProfesional = (req, res) => {
     }
       
     const nuevoProfesional = {
+        correo_electronico: req.body.correo_electronico,
+        clave_acceso: req.body.clave_acceso,
         nombre: req.body.nombre,
         apellidos: req.body.apellidos,
         direccion: req.body.direccion,
-        pension: req.body.pension,
-        persona_contacto: req.body.persona_contacto,
         telefono_contacto: req.body.telefono_contacto,
-        fecha_nacimiento: req.body.fecha_nacimiento,
-        peso: req.body.peso,
-        estatura: req.body.estatura,
+        rol: req.body.rol,
         createdAt: new Date(),
         updatedAt: new Date()
     };
