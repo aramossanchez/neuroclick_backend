@@ -45,6 +45,31 @@ PruebaController.pruebaId = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
+//OBTENER PRUEBAS, POR ROL DE PROFESIONAL
+PruebaController.pruebaProfesionalRol = (req, res) => {
+
+    const rol = req.params.rol;
+
+    pruebas.findAll({where: { profesional: rol }})
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `No se puede encontrar la prueba con el profesional ${rol}.`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ha surgido algún error al intentar acceder a la prueba con el profesional " + rol
+            });
+        });
+
+};
+
+//-------------------------------------------------------------------------------------
+
 //CREAR PRUEBA NUEVA
 PruebaController.nuevaPrueba = (req, res) => {
 

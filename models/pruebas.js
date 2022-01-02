@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    profesional: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,
