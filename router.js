@@ -9,6 +9,7 @@ const MedicacionRouter = require('./views/MedicacionRouter');
 const MedicacionUsuarioRouter = require('./views/MedicacionUsuarioRouter');
 const ProfesionalRouter = require('./views/ProfesionalRouter');
 const PruebaRouter = require('./views/PruebaRouter');
+const ValoracionRouter = require('./views/ValoracionRouter');
 
 /*RUTAS*/
 router.use('/usuarios', UsuarioRouter);
@@ -19,5 +20,6 @@ router.use('/medicaciones', MedicacionRouter);
 router.use('/medicaciones_usuarios', MedicacionUsuarioRouter);
 router.use('/profesionales', ProfesionalRouter);
 router.use('/pruebas', PruebaRouter);
+router.use('/valoraciones', ValoracionRouter);
 
 module.exports = router;
