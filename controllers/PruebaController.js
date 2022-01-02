@@ -1,43 +1,43 @@
-const { enfermedades } = require('../models/index');
+const { pruebas } = require('../models/index');
 
-const EnfermedadController = {};
+const PruebaController = {};
 
-//LISTADO DE TODAS LAS ENFERMEDADES
+//LISTADO DE TODAS LAS PRUEBAS
 
-EnfermedadController.listadoCompleto = (req, res) => {
+PruebaController.listadoCompleto = (req, res) => {
 
-    enfermedades.findAll()
+    pruebas.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar acceder a las enfermedades."
+                err.message || "Ha surgido algún error al intentar acceder a las pruebas."
             });
         });
 };
 
 //-------------------------------------------------------------------------------------
 
-//OBTENER UNA UNICA ENFERMEDAD, BUSCANDO POR ID
-EnfermedadController.enfermedadId = (req, res) => {
+//OBTENER UNA UNICA PRUEBA, BUSCANDO POR ID
+PruebaController.pruebaId = (req, res) => {
 
     const id = req.params.id;
 
-    enfermedades.findByPk(id)
+    pruebas.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `No se puede encontrar la enfermedad con el id ${id}.`
+                    message: `No se puede encontrar la prueba con el id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar acceder a la enfermedad con el id " + id
+                message: "Ha surgido algún error al intentar acceder a la prueba con el id " + id
             });
         });
 
@@ -45,30 +45,30 @@ EnfermedadController.enfermedadId = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//CREAR ENFERMEDAD NUEVA
-EnfermedadController.nuevaEnfermedad = (req, res) => {
+//CREAR PRUEBA NUEVA
+PruebaController.nuevaPrueba = (req, res) => {
 
-    if (!req.body.nombre) {
+    if (!req.body.descripcion) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
         return;
     }
       
-    const nuevaEnfermedad = {
-        nombre: req.body.nombre,
+    const nuevaPrueba = {
+        descripcion: req.body.descripcion,
         createdAt: new Date(),
         updatedAt: new Date()
     };
       
-    enfermedades.create(nuevaEnfermedad)
+    pruebas.create(nuevaPrueba)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                err.message || "Ha surgido algún error al intentar crear la enfermedad."
+                err.message || "Ha surgido algún error al intentar crear la prueba."
             });
         });
 
@@ -76,28 +76,28 @@ EnfermedadController.nuevaEnfermedad = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//ACTUALIZAR ENFERMEDAD, BUSCANDO POR ID
-EnfermedadController.actualizarEnfermedad = (req, res) => {
+//ACTUALIZAR PRUEBA, BUSCANDO POR ID
+PruebaController.actualizarPrueba = (req, res) => {
 
         const id = req.params.id;
 
-        enfermedades.update(req.body, {
+        pruebas.update(req.body, {
             where: { id: id }
           })
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "La enfermedad ha sido actualizada correctamente."
+                  message: "La prueba ha sido actualizada correctamente."
                 });
               } else {
                 res.send({
-                  message: `No se ha podido actualizar la enfermedad con el id ${id}`
+                  message: `No se ha podido actualizar la prueba con el id ${id}`
                 });
               }
             })
             .catch(err => {
               res.status(500).send({
-                message: "Ha surgido algún error al intentar actualizar la enfermedad con el id " + id + "."
+                message: "Ha surgido algún error al intentar actualizar la prueba con el id " + id + "."
               });
             });
 
@@ -105,28 +105,28 @@ EnfermedadController.actualizarEnfermedad = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-//BORRAR ENFERMEDAD, BUSCANDO POR ID
-EnfermedadController.borrarEnfermedad = (req, res) => {
+//BORRAR PRUEBA, BUSCANDO POR ID
+PruebaController.borrarPrueba = (req, res) => {
 
     const id = req.params.id;
 
-    enfermedades.destroy({
+    pruebas.destroy({
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: `La enfermedad con id ${id} ha sido eliminada correctamente.`
+                    message: `La prueba con id ${id} ha sido eliminada correctamente.`
                 });
             } else {
                 res.send({
-                    message: `No se ha podido eliminar la enfermedad con id ${id}.`
+                    message: `No se ha podido eliminar la prueba con id ${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Ha surgido algún error al intentar borrar la enfermedad con el id " + id
+                message: "Ha surgido algún error al intentar borrar la prueba con el id " + id
             });
         });
 
@@ -134,4 +134,4 @@ EnfermedadController.borrarEnfermedad = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-module.exports = EnfermedadController;
+module.exports = PruebaController;

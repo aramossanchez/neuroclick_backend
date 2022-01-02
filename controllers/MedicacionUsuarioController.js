@@ -118,7 +118,7 @@ MedicacionUsuarioController.actualizarMedicacion_usuario = (req, res) => {
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "La medicacion_usuario ha sido actualizado correctamente."
+                  message: "La medicacion_usuario ha sido actualizada correctamente."
                 });
               } else {
                 res.send({
@@ -147,7 +147,7 @@ MedicacionUsuarioController.borrarMedicacion_usuario = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: `La medicacion_usuario con id ${id} ha sido eliminado correctamente.`
+                    message: `La medicacion_usuario con id ${id} ha sido eliminada correctamente.`
                 });
             } else {
                 res.send({

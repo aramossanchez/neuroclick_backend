@@ -118,7 +118,7 @@ EnfermedadUsuarioController.actualizarEnfermedad_usuario = (req, res) => {
             .then(num => {
               if (num == 1) {
                 res.send({
-                  message: "La enfermedad_usuario ha sido actualizado correctamente."
+                  message: "La enfermedad_usuario ha sido actualizada correctamente."
                 });
               } else {
                 res.send({
@@ -147,7 +147,7 @@ EnfermedadUsuarioController.borrarEnfermedad_usuario = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: `La enfermedad_usuario con id ${id} ha sido eliminado correctamente.`
+                    message: `La enfermedad_usuario con id ${id} ha sido eliminada correctamente.`
                 });
             } else {
                 res.send({
