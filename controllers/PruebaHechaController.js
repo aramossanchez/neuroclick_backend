@@ -1,6 +1,7 @@
 const { pruebas_hechas } = require('../models/index');
 const { usuario } = require('../models/index');
 const { profesionales } = require('../models/index');
+const { pruebas } = require('../models/index');
 
 const PruebaHechaController = {};
 
@@ -84,6 +85,35 @@ PruebaHechaController.prueba_hechaProfesionalId = (req, res) => {
     pruebas_hechas.findAll({
         include: [{
             model: profesionales,
+            where: {id: id}
+       }]})
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `No se puede encontrar la prueba_hecha con el id ${id}.`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ha surgido algún error al intentar acceder a la prueba_hecha con el id " + id
+            });
+        });
+
+};
+
+//-------------------------------------------------------------------------------------
+
+//OBTENER PRUEBAS_HECHAS, POR ID DE PRUEBA
+PruebaHechaController.prueba_hechaPruebaId = (req, res) => {
+
+    const id = req.params.id;
+
+    pruebas_hechas.findAll({
+        include: [{
+            model: pruebas,
             where: {id: id}
        }]})
         .then(data => {
