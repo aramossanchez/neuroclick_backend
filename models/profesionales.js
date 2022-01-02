@@ -4,9 +4,9 @@ const {  Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class profesionales extends Model {
     static associate(models) {
-      // this.hasMany(models.enfermedades_usuarios, {
-      //   foreignKey: 'EnfermedadID'
-      // });
+      this.hasMany(models.pruebas_hechas, {
+        foreignKey: 'ProfesionalID'
+      });
     }
   };
   profesionales.init({

@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.pruebas_valoraciones, {
         foreignKey: 'PruebaID'
       });
+      this.hasMany(models.pruebas_hechas, {
+        foreignKey: 'PruebaID'
+      });
     }
   };
   pruebas.init({
