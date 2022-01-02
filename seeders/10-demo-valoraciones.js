@@ -77,22 +77,7 @@ module.exports = {
       {"pregunta": "Valoracion 72", "escala": 5},
       {"pregunta": "Valoracion 73", "escala": 5},
       {"pregunta": "Valoracion 74", "escala": 5},
-      {"pregunta": "Valoracion 75", "escala": 5},
-      {"pregunta": "Valoracion 76", "escala": 3},
-      {"pregunta": "Valoracion 77", "escala": 3},
-      {"pregunta": "Valoracion 78", "escala": 3},
-      {"pregunta": "Valoracion 79", "escala": 3},
-      {"pregunta": "Valoracion 80", "escala": 3},
-      {"pregunta": "Valoracion 81", "escala": 3},
-      {"pregunta": "Valoracion 82", "escala": 3},
-      {"pregunta": "Valoracion 83", "escala": 3},
-      {"pregunta": "Valoracion 84", "escala": 3},
-      {"pregunta": "Valoracion 85", "escala": 3},
-      {"pregunta": "Valoracion 86", "escala": 3},
-      {"pregunta": "Valoracion 87", "escala": 3},
-      {"pregunta": "Valoracion 88", "escala": 3},
-      {"pregunta": "Valoracion 89", "escala": 3},
-      {"pregunta": "Valoracion 90", "escala": 3},
+      {"pregunta": "Valoracion 75", "escala": 5}
     ], {});
   },
 

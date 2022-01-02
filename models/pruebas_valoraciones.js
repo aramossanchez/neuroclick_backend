@@ -2,28 +2,31 @@
 const {  Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class valoraciones extends Model {
+  class pruebas_valoraciones extends Model {
     static associate(models) {
-      this.hasMany(models.pruebas_valoraciones, {
+      this.belongsTo(models.pruebas, {
+        foreignKey: 'PruebaID'
+      });
+      this.belongsTo(models.valoraciones, {
         foreignKey: 'ValoracionID'
       });
     }
   };
-  valoraciones.init({
-    pregunta: {
-      type: DataTypes.STRING,
+  pruebas_valoraciones.init({
+    PruebaID: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    escala: {
+    ValoracionID: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    modelName: 'valoraciones',
+    modelName: 'pruebas_valoraciones',
   }, {
     freezeTableName: true
   });
   
-  return valoraciones;
+  return pruebas_valoraciones;
 };
