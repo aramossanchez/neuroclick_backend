@@ -1,5 +1,6 @@
 const { pruebas_valoraciones } = require('../models/index');
 const { pruebas } = require('../models/index');
+const { valoraciones } = require('../models/index');
 
 const PruebaValoracionController = {};
 
@@ -55,7 +56,9 @@ PruebaValoracionController.prueba_valoracionPruebaId = (req, res) => {
         include: [{
             model: pruebas,
             where: {id: id}
-       }]})
+       },{
+           model: valoraciones
+        }]})
         .then(data => {
             if (data) {
                 res.send(data);

@@ -115,7 +115,10 @@ PruebaHechaController.prueba_hechaPruebaId = (req, res) => {
         include: [{
             model: pruebas,
             where: {id: id}
-       }]})
+        }],
+        order: [
+            ['createdAt', 'DESC'],
+        ],})
         .then(data => {
             if (data) {
                 res.send(data);
