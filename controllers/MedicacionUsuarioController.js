@@ -1,4 +1,5 @@
 const { medicaciones_usuarios } = require('../models/index');
+const { medicaciones } = require('../models/index');
 const { usuario } = require('../models/index');
 
 const MedicacionUsuarioController = {};
@@ -55,7 +56,9 @@ MedicacionUsuarioController.medicacion_usuarioUsuarioId = (req, res) => {
         include: [{
             model: usuario,
             where: {id: id}
-       }]})
+       },{
+            model:medicaciones
+        }]})
         .then(data => {
             if (data) {
                 res.send(data);

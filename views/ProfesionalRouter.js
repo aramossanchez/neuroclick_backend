@@ -4,7 +4,7 @@ const router = express.Router();
 const ProfesionalController = require('../controllers/ProfesionalController');
 
 
-// router.post('/login', ProfesionalController.signIn);
+router.post('/login', ProfesionalController.login);
 // router.post('/registro', auth, ProfesionalController.signUp);
 router.get('/', ProfesionalController.listadoCompleto);
 router.get('/:id', ProfesionalController.profesionalId);

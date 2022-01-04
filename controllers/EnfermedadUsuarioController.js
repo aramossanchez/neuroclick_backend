@@ -1,4 +1,5 @@
 const { enfermedades_usuarios } = require('../models/index');
+const { enfermedades } = require('../models/index');
 const { usuario } = require('../models/index');
 
 const EnfermedadUsuarioController = {};
@@ -55,6 +56,8 @@ EnfermedadUsuarioController.enfermedad_usuarioUsuarioId = (req, res) => {
         include: [{
             model: usuario,
             where: {id: id}
+       },{
+           model:enfermedades
        }]})
         .then(data => {
             if (data) {

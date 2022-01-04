@@ -1,6 +1,41 @@
 const { profesionales } = require('../models/index');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const authConfig = require('../config/auth');
 
 const ProfesionalController = {};
+
+//LOGIN EN LA APLICACION
+
+ProfesionalController.login = (req, res) => {
+
+    let correo_electronico = req.body.correo_electronico;
+    let clave_acceso = req.body.clave_acceso;
+
+    profesionales.findOne({
+        where: { correo_electronico: correo_electronico }
+    }).then(profesional => {
+        if (!profesional) {
+            res.status(404).json({ msg: "No se ha podido encontrar a ningún profesional con ese correo electrónico" });
+        } else {
+            if (bcrypt.compareSync(clave_acceso, profesional.clave_acceso)) { //COMPARA CONTRASEÑA INTRODUCIDA CON CONTRASEÑA GUARDADA, TRAS DESENCRIPTAR
+                let token = jwt.sign({ profesional: profesional }, authConfig.secret, {
+                    expiresIn: authConfig.expires
+                });
+                res.json({
+                    profesional: profesional,
+                    token: token
+                })
+            } else {
+                res.status(401).json({ msg: "Contraseña incorrecta" })
+            }
+        }
+    }).catch(err => {
+        res.status(500).json(err);
+    })
+};
+
+//-------------------------------------------------------------------------------------
 
 //LISTADO DE TODOS LOS PROFESIONALES
 
@@ -58,29 +93,39 @@ ProfesionalController.nuevoProfesional = (req, res) => {
         });
         return;
     }
+
+    let clave = req.body.clave;
+
+    if (clave.length >= 8) {//SE ENCRIPTA LA CONTRASEÑA SI MÍNIMO TIENE 8 CARACTERES
+        var password = bcrypt.hashSync(req.body.clave, Number.parseInt(authConfig.rounds));   
       
-    const nuevoProfesional = {
-        correo_electronico: req.body.correo_electronico,
-        clave_acceso: req.body.clave_acceso,
-        nombre: req.body.nombre,
-        apellidos: req.body.apellidos,
-        direccion: req.body.direccion,
-        telefono_contacto: req.body.telefono_contacto,
-        rol: req.body.rol,
-        createdAt: new Date(),
-        updatedAt: new Date()
-    };
-      
-    profesionales.create(nuevoProfesional)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                err.message || "Ha surgido algún error al intentar crear el profesional."
+        const nuevoProfesional = {
+            correo_electronico: req.body.correo_electronico,
+            clave_acceso: password,
+            nombre: req.body.nombre,
+            apellidos: req.body.apellidos,
+            direccion: req.body.direccion,
+            telefono_contacto: req.body.telefono_contacto,
+            rol: req.body.rol,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        };
+        
+        profesionales.create(nuevoProfesional)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                    err.message || "Ha surgido algún error al intentar crear el profesional."
+                });
             });
+    }else{
+        res.send({
+            message: `La contraseña tiene que tener un mínimo de 8 caracteres. ${clave}`
         });
+    }
 
 };
 
