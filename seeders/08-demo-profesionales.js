@@ -6,7 +6,6 @@ const authConfig = require('../config/auth');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('profesionales', [
-    /* 1 - 10 */
     {"correo_electronico": "armando@neuroclick.com", "clave_acceso":bcrypt.hashSync("12345678", Number.parseInt(authConfig.rounds)), "nombre": "Armando", "apellidos": "Ramos Sánchez", "direccion": "Calle Toledo, número 6, piso 1, puerta C", "telefono_contacto": "608806608", "rol": "admin"},
     {"correo_electronico": "rocio@neuroclick.com", "clave_acceso":bcrypt.hashSync("87654321", Number.parseInt(authConfig.rounds)), "nombre": "Rocío", "apellidos": "San Juan Montero", "direccion": "Calle Juicio, número 17, piso 7, puerta 4", "telefono_contacto": "655203203", "rol": "administracion"},
     {"correo_electronico": "joseramon@neuroclick.com", "clave_acceso":bcrypt.hashSync("12457896", Number.parseInt(authConfig.rounds)), "nombre": "Jose Ramón", "apellidos": "García Iglesias", "direccion": "Calle Getafe, número 81, piso 5, puerta E", "telefono_contacto": "654125000", "rol": "fisioterapia"},
