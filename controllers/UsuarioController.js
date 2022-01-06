@@ -52,7 +52,7 @@ UsuarioController.usuarioId = (req, res) => {
 //CREAR USUARIO NUEVO
 UsuarioController.nuevoUsuario = (req, res) => {
 
-    if (!req.body.nombre || !req.body.apellidos || !req.body.direccion || !req.body.pension || !req.body.persona_contacto || !req.body.telefono_contacto || !req.body.fecha_nacimiento || !req.body.peso || !req.body.estatura) {
+    if (!req.body.nombre || !req.body.apellidos || !req.body.direccion || !req.body.telefono_usuario ||!req.body.pension || !req.body.persona_contacto || !req.body.telefono_contacto || !req.body.fecha_nacimiento || !req.body.peso || !req.body.estatura) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
@@ -63,6 +63,7 @@ UsuarioController.nuevoUsuario = (req, res) => {
         nombre: req.body.nombre,
         apellidos: req.body.apellidos,
         direccion: req.body.direccion,
+        telefono_usuario: req.body.telefono_usuario,
         pension: req.body.pension,
         persona_contacto: req.body.persona_contacto,
         telefono_contacto: req.body.telefono_contacto,
