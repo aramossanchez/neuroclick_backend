@@ -94,10 +94,10 @@ ProfesionalController.nuevoProfesional = (req, res) => {
         return;
     }
 
-    let clave = req.body.clave;
+    let clave_acceso = req.body.clave_acceso;
 
-    if (clave.length >= 8) {//SE ENCRIPTA LA CONTRASEÑA SI MÍNIMO TIENE 8 CARACTERES
-        var password = bcrypt.hashSync(req.body.clave, Number.parseInt(authConfig.rounds));   
+    if (clave_acceso.length >= 8) {//SE ENCRIPTA LA CONTRASEÑA SI MÍNIMO TIENE 8 CARACTERES
+        var password = bcrypt.hashSync(req.body.clave_acceso, Number.parseInt(authConfig.rounds));   
       
         const nuevoProfesional = {
             correo_electronico: req.body.correo_electronico,

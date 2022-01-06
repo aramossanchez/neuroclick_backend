@@ -6,10 +6,10 @@ const ProfesionalController = require('../controllers/ProfesionalController');
 
 
 router.post('/login', ProfesionalController.login);
-router.get('/', ProfesionalController.listadoCompleto);
-router.get('/:id', ProfesionalController.profesionalId);
-router.post('/', ProfesionalController.nuevoProfesional);
-router.put('/:id', ProfesionalController.actualizarProfesional);
-router.delete('/:id', ProfesionalController.borrarProfesional);
+router.get('/', auth, ProfesionalController.listadoCompleto);
+router.get('/:id', auth, ProfesionalController.profesionalId);
+router.post('/', auth, ProfesionalController.nuevoProfesional);
+router.put('/:id', auth, ProfesionalController.actualizarProfesional);
+router.delete('/:id', auth, ProfesionalController.borrarProfesional);
 
 module.exports = router;
