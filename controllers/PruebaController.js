@@ -73,7 +73,7 @@ PruebaController.pruebaProfesionalRol = (req, res) => {
 //CREAR PRUEBA NUEVA
 PruebaController.nuevaPrueba = (req, res) => {
 
-    if (!req.body.descripcion) {
+    if (!req.body.nombre || !req.body.descripcion || !req.body.profesional) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
@@ -81,7 +81,9 @@ PruebaController.nuevaPrueba = (req, res) => {
     }
       
     const nuevaPrueba = {
+        nombre: req.body.nombre,
         descripcion: req.body.descripcion,
+        profesional: req.body.profesional,
         createdAt: new Date(),
         updatedAt: new Date()
     };

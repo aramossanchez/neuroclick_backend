@@ -42,9 +42,9 @@ ProfesionalController.login = (req, res) => {
 ProfesionalController.listadoCompleto = (req, res) => {
 
     profesionales.findAll({
-        order: [
-            ['apellidos', 'ASC'],
-        ],
+        // order: [
+        //     ['apellidos', 'ASC'],
+        // ],
     })
         .then(data => {
             res.send(data);
