@@ -1,5 +1,7 @@
 # NEUROCLICK (BACKEND)
 
+![Portfolio Carta](img/logo-login.png)
+
 ## APLICACIÓN PARA LA GESTIÓN DE UNA CLÍNICA DE NEUROREHABILITACIÓN 🧠
 
 Aplicación con la que gestionar los diferentes usuarios y profesionales de una clínica de neurorehabiliación.
