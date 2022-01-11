@@ -1,5 +1,7 @@
 # NEUROCLICK (BACKEND)
 
+## API CON LA QUE CONECTAR LA PARTE FRONTEND (https://github.com/aramossanchez/neuroclick_frontend) Y LA BASE DE DATOS DE LA APLICACIÓN ⛓
+
 ![Portfolio Carta](img/logo-login.png)
 
 ## APLICACIÓN PARA LA GESTIÓN DE UNA CLÍNICA DE NEUROREHABILITACIÓN 🧠
