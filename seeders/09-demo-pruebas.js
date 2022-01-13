@@ -13,6 +13,12 @@ module.exports = {
       {"nombre": "Prueba8", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 8 (bajo), de 9 a 16 (medio) y de 17 a 24 (bueno).", "profesional": "Neuropsicología"},
       {"nombre": "Prueba9", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 5 (bajo), de 6 a 10 (medio) y de 11 a 15 (bueno).", "profesional": "Neuropsicología"},
       {"nombre": "Prueba10", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 20 (bajo), de 21 a 40 (medio) y de 41 a 60 (bueno).", "profesional": "Logopedia"},
+      {"nombre": "Prueba11", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 5 (bajo), de 6 a 10 (medio) y de 11 a 15 (bueno).", "profesional": "Logopedia"},
+      {"nombre": "Prueba12", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 10 (bajo), de 11 a 20 (medio) y de 21 a 30 (bueno).", "profesional": "Logopedia"},
+      {"nombre": "Prueba13", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 6 (bajo), de 7 a 12 (medio) y de 13 a 18 (bueno).", "profesional": "Fisioterapia"},
+      {"nombre": "Prueba14", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 8 (bajo), de 9 a 16 (medio) y de 17 a 24 (bueno).", "profesional": "Neuropsicología"},
+      {"nombre": "Prueba15", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 9 (bajo), de 10 a 18 (medio) y de 19 a 27 (bueno).", "profesional": "Terapia Ocupacional"},
+      {"nombre": "Prueba16", "descripcion": "Esta prueba se valora de la siguiente manera: de 0 a 6 (bajo), de 7 a 12 (medio) y de 13 a 18 (bueno).", "profesional": "Neuropsicología"},
     ], {});
   },
 
