@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "remoto",
-    "password": "Consola06",
-    "database": "neuroclick",
-    "host": "192.168.1.140",
+    "username": "b871d72ff3c707",
+    "password": "029ee425",
+    "database": "heroku_17febb2a34382ed",
+    "host": "eu-cdbr-west-02.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "b871d72ff3c707",
+    "password": "029ee425",
+    "database": "heroku_17febb2a34382ed",
+    "host": "eu-cdbr-west-02.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "b871d72ff3c707",
+    "password": "029ee425",
+    "database": "heroku_17febb2a34382ed",
+    "host": "eu-cdbr-west-02.cleardb.net",
     "dialect": "mysql"
   }
 }
