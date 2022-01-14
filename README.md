@@ -41,4 +41,4 @@ npm run start
 ```
 
 ## URL DE DEPLOY 💥
-enlace
+https://ars-neuroclick.herokuapp.com/
