@@ -117,7 +117,7 @@ PruebaHechaController.prueba_hechaPruebaId = (req, res) => {
             where: {id: id}
         }],
         order: [
-            ['createdAt', 'DESC'],
+            ['id', 'DESC'],
         ],})
         .then(data => {
             if (data) {
@@ -162,7 +162,7 @@ PruebaHechaController.prueba_hechaPruebaNombreUsuarioID = (req, res) => {
             }
         ],
         order: [
-            ['createdAt', 'ASC'],
+            ['id', 'ASC'],
         ],})
         .then(data => {
             if (data) {
