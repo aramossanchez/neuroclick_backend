@@ -15,10 +15,15 @@ module.exports = (sequelize, DataTypes) => {
   pruebas.init({
     nombre: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     },
     descripcion: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    puntuacion_maxima: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     profesional: {

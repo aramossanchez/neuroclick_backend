@@ -70,6 +70,31 @@ PruebaController.pruebaProfesionalRol = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
+//OBTENER PRUEBA, POR NOMBRE DE PRUEBA
+PruebaController.pruebaNombre = (req, res) => {
+
+    const nombre = req.params.nombre;
+
+    pruebas.findAll({where: { nombre: nombre }})
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `No se puede encontrar la prueba con el nombre ${nombre}.`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ha surgido algún error al intentar acceder a la prueba con el nombre " + nombre
+            });
+        });
+
+};
+
+//-------------------------------------------------------------------------------------
+
 //CREAR PRUEBA NUEVA
 PruebaController.nuevaPrueba = (req, res) => {
 

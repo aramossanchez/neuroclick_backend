@@ -57,7 +57,7 @@ PruebaHechaController.prueba_hechaUsuarioId = (req, res) => {
         include: [{
             model: usuario,
             where: {id: id}
-       }]})
+       },{model: pruebas}]})
         .then(data => {
             if (data) {
                 res.send(data);
@@ -131,6 +131,51 @@ PruebaHechaController.prueba_hechaPruebaId = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message: "Ha surgido algún error al intentar acceder a la prueba_hecha con el id " + id
+            });
+        });
+
+};
+
+//-------------------------------------------------------------------------------------
+
+//OBTENER PRUEBAS_HECHAS, POR NOMBRE DE PRUEBA E ID DE USUARIO
+PruebaHechaController.prueba_hechaPruebaNombreUsuarioID = (req, res) => {
+
+    if (!req.body.id || !req.body.nombre) {
+        res.status(400).send({
+          message: "No puede estar vacío ningún campo."
+        });
+        return;
+    }
+
+    const id = req.body.id;
+    const nombre = req.body.nombre;
+
+    pruebas_hechas.findAll({
+        include: [{
+            model: pruebas,
+            where: {nombre: nombre}
+            },
+            {
+            model: usuario,
+            where: {id: id}
+            }
+        ],
+        order: [
+            ['createdAt', 'ASC'],
+        ],})
+        .then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.status(404).send({
+                    message: `No se puede encontrar la prueba_hecha con el nombre ${nombre}.`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ha surgido algún error al intentar acceder a la prueba_hecha con el nombre " + nombre
             });
         });
 
