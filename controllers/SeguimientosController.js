@@ -1,5 +1,6 @@
 const { seguimientos } = require('../models/index');
 const { usuario } = require('../models/index');
+const { profesionales } = require('../models/index');
 
 const SeguimientosController = {};
 
@@ -55,7 +56,7 @@ SeguimientosController.seguimientoUsuarioId = (req, res) => {
         include: [{
             model: usuario,
             where: {id: id}
-        }],
+        },{model:profesionales}],
         order: [
             ['id', 'DESC'],
         ],})
