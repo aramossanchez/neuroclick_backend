@@ -98,7 +98,7 @@ PruebaController.pruebaNombre = (req, res) => {
 //CREAR PRUEBA NUEVA
 PruebaController.nuevaPrueba = (req, res) => {
 
-    if (!req.body.nombre || !req.body.descripcion || !req.body.profesional) {
+    if (!req.body.nombre || !req.body.descripcion || !req.body.puntuacion_maxima || !req.body.profesional) {
         res.status(400).send({
           message: "No puede estar vacío ningún campo."
         });
@@ -108,6 +108,7 @@ PruebaController.nuevaPrueba = (req, res) => {
     const nuevaPrueba = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
+        puntuacion_maxima: req.body.puntuacion_maxima,
         profesional: req.body.profesional,
         createdAt: new Date(),
         updatedAt: new Date()
