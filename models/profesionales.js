@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.pruebas_hechas, {
         foreignKey: 'ProfesionalID'
       });
+      this.hasMany(models.seguimientos, {
+        foreignKey: 'ProfesionalID'
+      });
     }
   };
   profesionales.init({

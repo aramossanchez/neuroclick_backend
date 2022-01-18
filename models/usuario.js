@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.pruebas_hechas, {
         foreignKey: 'UsuarioID'
       });
+      this.hasMany(models.seguimientos, {
+        foreignKey: 'UsuarioID'
+      });
     }
   };
   usuario.init({
