@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.seguimientos, {
         foreignKey: 'ProfesionalID'
       });
+      this.hasMany(models.citas, {
+        foreignKey: 'ProfesionalID'
+      });
     }
   };
   profesionales.init({

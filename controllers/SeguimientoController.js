@@ -2,11 +2,11 @@ const { seguimientos } = require('../models/index');
 const { usuario } = require('../models/index');
 const { profesionales } = require('../models/index');
 
-const SeguimientosController = {};
+const SeguimientoController = {};
 
 //LISTADO DE TODOS LOS SEGUIMIENTOS
 
-SeguimientosController.listadoCompleto = (req, res) => {
+SeguimientoController.listadoCompleto = (req, res) => {
 
     seguimientos.findAll()
         .then(data => {
@@ -23,7 +23,7 @@ SeguimientosController.listadoCompleto = (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //OBTENER UN UNICO SEGUIMIENTO, BUSCANDO POR ID
-SeguimientosController.seguimientoId = (req, res) => {
+SeguimientoController.seguimientoId = (req, res) => {
 
     const id = req.params.id;
 
@@ -48,7 +48,7 @@ SeguimientosController.seguimientoId = (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //OBTENER SEGUIMIENTOS POR ID DE USUARIO
-SeguimientosController.seguimientoUsuarioId = (req, res) => {
+SeguimientoController.seguimientoUsuarioId = (req, res) => {
 
     const id = req.params.id;
 
@@ -80,7 +80,7 @@ SeguimientosController.seguimientoUsuarioId = (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //CREAR SEGUIMIENTO NUEVO
-SeguimientosController.nuevoSeguimiento = (req, res) => {
+SeguimientoController.nuevoSeguimiento = (req, res) => {
 
     if (!req.body.descripcion || !req.body.UsuarioID || !req.body.ProfesionalID) {
         res.status(400).send({
@@ -113,7 +113,7 @@ SeguimientosController.nuevoSeguimiento = (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //ACTUALIZAR SEGUIMIENTO, BUSCANDO POR ID
-SeguimientosController.actualizarSeguimiento = (req, res) => {
+SeguimientoController.actualizarSeguimiento = (req, res) => {
 
         const id = req.params.id;
 
@@ -142,7 +142,7 @@ SeguimientosController.actualizarSeguimiento = (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //BORRAR SEGUIMIENTO, BUSCANDO POR ID
-SeguimientosController.borrarSeguimiento = (req, res) => {
+SeguimientoController.borrarSeguimiento = (req, res) => {
 
     const id = req.params.id;
 
@@ -170,4 +170,4 @@ SeguimientosController.borrarSeguimiento = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 
-module.exports = SeguimientosController;
+module.exports = SeguimientoController;

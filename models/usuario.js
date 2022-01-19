@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.seguimientos, {
         foreignKey: 'UsuarioID'
       });
+      this.hasMany(models.citas, {
+        foreignKey: 'UsuarioID'
+      });
     }
   };
   usuario.init({

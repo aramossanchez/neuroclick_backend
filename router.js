@@ -12,7 +12,8 @@ const PruebaRouter = require('./views/PruebaRouter');
 const ValoracionRouter = require('./views/ValoracionRouter');
 const PruebaValoracionRouter = require('./views/PruebaValoracionRouter');
 const PruebaHechaRouter = require('./views/PruebaHechaRouter');
-const SeguimientosRouter = require('./views/SeguimientosRouter');
+const SeguimientoRouter = require('./views/SeguimientoRouter');
+const CitaRouter = require('./views/CitaRouter');
 
 /*RUTAS*/
 router.use('/usuarios', UsuarioRouter);
@@ -26,6 +27,7 @@ router.use('/pruebas', PruebaRouter);
 router.use('/valoraciones', ValoracionRouter);
 router.use('/pruebas_valoraciones', PruebaValoracionRouter);
 router.use('/pruebas_hechas', PruebaHechaRouter);
-router.use('/seguimientos', SeguimientosRouter);
+router.use('/seguimientos', SeguimientoRouter);
+router.use('/citas', CitaRouter);
 
 module.exports = router;
